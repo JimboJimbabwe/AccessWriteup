@@ -1,0 +1,172 @@
+
+NMAP OUTPUT:
+
+PORT      STATE SERVICE       REASON          VERSION
+53/tcp    open  domain        syn-ack ttl 127 Simple DNS Plus
+80/tcp    open  http          syn-ack ttl 127 Apache httpd 2.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)
+88/tcp    open  kerberos-sec  syn-ack ttl 127 Microsoft Windows Kerberos (server time: 2022-12-13 16:23:27Z)
+135/tcp   open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack ttl 127 Microsoft Windows netbios-ssn
+389/tcp   open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: access.offsec0., Site: Default-First-Site-Name)
+445/tcp   open  microsoft-ds? syn-ack ttl 127
+464/tcp   open  kpasswd5?     syn-ack ttl 127
+593/tcp   open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped    syn-ack ttl 127
+3268/tcp  open  ldap          syn-ack ttl 127 Microsoft Windows Active Directory LDAP (Domain: access.offsec0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped    syn-ack ttl 127
+5985/tcp  open  http          syn-ack ttl 127 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+9389/tcp  open  mc-nmf        syn-ack ttl 127 .NET Message Framing
+49666/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49668/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49675/tcp open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
+49676/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49679/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49710/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+49788/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
+
+
+Nikto Output:
+
++ Server: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
+^[[A^[[A^[[A^[[A^[[A^[[A^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B+ Allowed HTTP Methods: HEAD, GET, POST, OPTIONS, TRACE 
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ Retrieved x-powered-by header: PHP/8.0.7
++ OSVDB-3268: /icons/: Directory indexing found.
++ OSVDB-3233: /icons/README: Apache default file found.
++ 8724 requests: 0 error(s) and 8 item(s) reported on remote host
++ End Time:           2022-12-13 11:19:08 (GMT-5) (364 seconds)
+
+
+
+GoBuster:
+
+
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://192.168.98.187
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirbuster/wordlists/directory-list-1.0.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2022/12/13 11:12:23 Starting gobuster in directory enumeration mode
+===============================================================
+/assets               (Status: 301) [Size: 341] [--> http://192.168.98.187/assets/]
+/con                  (Status: 403) [Size: 303]                                    
+/phpmyadmin           (Status: 403) [Size: 422]                                    
+/uploads              (Status: 301) [Size: 342] [--> http://192.168.98.187/uploads/]
+/licenses             (Status: 403) [Size: 422]                                     
+/forms                (Status: 301) [Size: 340] [--> http://192.168.98.187/forms/]  
+/*                    (Status: 403) [Size: 303]                                     
+/*checkout*           (Status: 403) [Size: 303]                                     
+/webalizer            (Status: 403) [Size: 422]                                     
+/Buying-a-laptop%3F-12-tips-for-you%21 (Status: 403) [Size: 303]                    
+/Buying-a-computer%3F-Ask-these-3-questions%21 (Status: 403) [Size: 303]            
+/*http%3A             (Status: 403) [Size: 303]                                     
+/%E6%B2%A2%E5%B0%BB%E3%82%A8%E3%83%AA%E3%82%AB%3AErica%E3%82%A8%E3%83%AA%E3%82%AB (Status: 403) [Size: 303]
+/%E7%B6%BE%E7%80%AC%E3%81%AF%E3%82%8B%E3%81%8B%3AJUMP%21 (Status: 403) [Size: 303]                         
+/0SwAAAMEWDFg8YsQFLdGdWso9*LDKH69RwYRFVfWLY4!R4cshBFiF828rHevN*G079wmFnW5w4RT0cU5zPnZGHVzvRQ6ESOhcsPLje2upEXOxBrlHMYGylQ (Status: 403) [Size: 303]
+/200109*              (Status: 403) [Size: 303]                                                                                                   
+/*docroot*            (Status: 403) [Size: 303]                                                                                                   
+/%20                  (Status: 403) [Size: 303]                                                                                                   
+/*dc_                 (Status: 403) [Size: 303]                                                                                                   
+/*sa_                 (Status: 403) [Size: 303]                                                                                                   
+/**http%3a            (Status: 403) [Size: 303]                                                                                                   
+/Hannes_Alfv%E9n      (Status: 403) [Size: 303]                                                                                                   
+/Alfv%E9n_wave        (Status: 403) [Size: 303]                                                                                                   
+/Enciclopedia_Libre_Universal_en_Espa%F1ol (Status: 403) [Size: 303]                                                                              
+/%3c200505050346      (Status: 403) [Size: 303]                                                                                                   
+/%3cNBBBJGEAGJAKLIDBKJOPMEFLAPAC (Status: 403) [Size: 303]                                                                                        
+/mosquitologof%FCrshopfigurklein_3 (Status: 403) [Size: 303]                                                                                      
+/mtitenterprises"     (Status: 403) [Size: 303]                                                                                                   
+/%22Kode-pos%22-%22daftar%22 (Status: 403) [Size: 303]                                                                                            
+/_Face_testing_at_Logan_is_fo%0Dund_lacking%2B (Status: 403) [Size: 303]                                                                          
+/Post%2Dit%AE%5FSoftware%5FNotes%5F3%2E1%5F%5F%2D%5FStandard (Status: 403) [Size: 303]   
+
+
+OK Lesson learned with webpages you need to search for upload vectors
+
+Output after shell access w powershell
+
+C:\xampp\htdocs\uploads>powershell
+powershell
+nWindows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+et PS C:\xampp\htdocs\uploads> net users
+net net users
+The syntax of this command is:
+
+NET
+    [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
+      HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START |
+      STATISTICS | STOP | TIME | USE | USER | VIEW ]
+PS C:\xampp\htdocs\uploads> net user
+net user
+
+User accounts for \\SERVER
+
+-------------------------------------------------------------------------------
+Administrator            Guest                    krbtgt                   
+svc_apache               svc_mssql                
+The command completed successfully.
+
+PS C:\xampp\htdocs\uploads> 
+
+PS C:\xampp\htdocs\uploads> import-module PowerView.ps1
+import-module PowerView.ps1
+import-module : The specified module 'PowerView.ps1' was not loaded because no valid module file was found in any 
+module directory.
+At line:1 char:1
++ import-module PowerView.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (PowerView.ps1:String) [Import-Module], FileNotFoundException
+    + FullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand
+ 
+PS C:\xampp\htdocs\uploads> import-module .\PowerView.ps1
+import-module .\PowerView.ps1
+PS C:\xampp\htdocs\uploads> Get-netuser svc_mssql
+Get-netuser svc_mssql
+
+
+company                       : Access
+logoncount                    : 1
+badpasswordtime               : 12/31/1600 4:00:00 PM
+distinguishedname             : CN=MSSQL,CN=Users,DC=access,DC=offsec
+objectclass                   : {top, person, organizationalPerson, user}
+lastlogontimestamp            : 4/8/2022 2:40:02 AM
+name                          : MSSQL
+objectsid                     : S-1-5-21-537427935-490066102-1511301751-1104
+samaccountname                : svc_mssql
+codepage                      : 0
+samaccounttype                : USER_OBJECT
+accountexpires                : NEVER
+cn                            : MSSQL
+whenchanged                   : 7/6/2022 5:23:18 PM
+instancetype                  : 4
+usncreated                    : 16414
+objectguid                    : 05153e48-7b4b-4182-a6fe-22b6ff95c1a9
+lastlogoff                    : 12/31/1600 4:00:00 PM
+objectcategory                : CN=Person,CN=Schema,CN=Configuration,DC=access,DC=offsec
+dscorepropagationdata         : 1/1/1601 12:00:00 AM
+serviceprincipalname          : MSSQLSvc/DC.access.offsec
+givenname                     : MSSQL
+lastlogon                     : 4/8/2022 2:40:02 AM
+badpwdcount                   : 0
+useraccountcontrol            : NORMAL_ACCOUNT, DONT_EXPIRE_PASSWORD
+whencreated                   : 4/8/2022 9:39:43 AM
+countrycode                   : 0
+primarygroupid                : 513
+pwdlastset                    : 5/21/2022 5:33:45 AM
+msds-supportedencryptiontypes : 0
+usnchanged                    : 73754
+
+This somehow, the SPN number helps with kerberoasting
+
+
